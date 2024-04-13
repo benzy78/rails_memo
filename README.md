@@ -13,16 +13,22 @@ railsに関するメモ、基本の書き方など
 * アクション：コントローラのメソッドのこと。
 
 * ルーティング：URLにアクセスしたとき、どのコントローラのどのアクションに処理を振り分けるかを定義する仕組み。ルーティング情報はconfig/routes.rbに記述する決まり。  
-`get ‘/任意のurl’, to: ‘対応させたいコントローラ名#アクション名’`  
-`例　get '/users', to: 'users#index' `
+```config/routes.rb
+get ‘/任意のurl’, to: ‘対応させたいコントローラ名#アクション名’
+```  
+```config/routes.rb
+例　get '/users', to: 'users#index'
+```
 * getメソッドでは、下記のように、to以下を省略可能。また、アクションですべき処理がない場合はコントローラのアクションも省略可能。
-`get '/users/new'`
+```config/routes.rb
+get '/users/new'
+```
 
 * HTTPリクエストメソッド（orリクエストメソッド）：ブラウザからの要求（リクエスト）がどんな処理を求めているかを区別するための取り決め。GET、POST ,PUT ,PATCH,DELETEなどがある。大抵、一般的なアクセスはGET、フォームからのデータ送信はPOST。
 
 * コントローラでlocalhost:3000にアクセスした時、indexページを表示する処理。  
 usersディレクトリ直下のindex.html.erbを表示する場合
-```config/routes.rb
+```users_controller.rb
 def index
   render template: 'users/index'
 end
