@@ -22,7 +22,7 @@ railsに関するメモ、基本の書き方など
 
 * コントローラでlocalhost:3000にアクセスした時、indexページを表示する処理。  
 usersディレクトリ直下のindex.html.erbを表示する場合
-```
+```config/routes.rb
 def index
   render template: 'users/index'
 end
