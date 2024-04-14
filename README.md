@@ -51,6 +51,10 @@ end
 `<% %>` rubyのコードとして実行.  
 `<%= %>` rubyコードの実行結果の戻り値を出力
 * layouts：ページ共通のデザインのテンプレート置き場。railsではビューを生成するタイミングで、まずapplication.html.erbを解釈する。
+* link_toヘルパーメソッド
+```index.html.rb
+link_to リンク名,リンク先のパス 
+```
 
 ## データベース関連
 * RDB(Relational DateBase)：データベースの種類のことで、データをテーブルと呼ばれる表形式で表、データの操作にはSQLを使用する。
