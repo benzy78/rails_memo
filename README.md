@@ -53,7 +53,8 @@ end
 * layouts：ページ共通のデザインのテンプレート置き場。railsではビューを生成するタイミングで、まずapplication.html.erbを解釈する。
 * link_toヘルパーメソッド
 ```index.html.rb
-link_to リンク名,リンク先のパス 
+<%= link_to リンク名,リンク先のパス %>
+<%= link_to "新規投稿", new_diary_path %>
 ```
 
 ## データベース関連
