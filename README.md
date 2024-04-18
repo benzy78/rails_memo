@@ -79,4 +79,4 @@ before_action メソッド名, 条件ハッシュ
 * 
 
 ## 開発中のちょっとしたこと
-* sass使うなら、`gem 'sassc'`をgemfileに入れて、`bundle install`しないとダメっぽい。
+* sass使うなら、`gem 'sassc'`をgemfileに入れて、`bundle install`しないとダメっぽい。あと、cssのコメントのところをsassに移植する。
