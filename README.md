@@ -80,3 +80,4 @@ before_action メソッド名, 条件ハッシュ
 
 ## 開発中のちょっとしたこと
 * sass使うなら、`gem 'sassc'`をgemfileに入れて、`bundle install`しないとダメっぽい。あと、cssのコメントのところをsassに移植する。
+* link_toとかformとかrubyコード埋め込んでる時のclassの付け方:　`form.submit, class: "任意のクラス名"`
