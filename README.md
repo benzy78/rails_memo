@@ -81,3 +81,5 @@ before_action メソッド名, 条件ハッシュ
 ## 開発中のちょっとしたこと
 * sass使うなら、`gem 'sassc'`をgemfileに入れて、`bundle install`しないとダメっぽい。あと、cssのコメントのところをsassに移植する。
 * link_toとかformとかrubyコード埋め込んでる時のclassの付け方:　`form.submit, class: "任意のクラス名"`
+* 投稿時のバリデーションに引っかかった時にエラーメッセージが出ない:=>import Rails from "./rails-ujs”;をjavascript/application.jsに書くとエラーメッセージが出るようになった.＞エラーメッセージが出るようになったけど、メッセージの内容を変えたい。nameを入力してくださいになってしまう。＝＞モデルの翻訳情報を追加すればいい（config/locales/ja.yml）（速習実践　p103）
+
