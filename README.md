@@ -83,18 +83,19 @@ before_action メソッド名, 条件ハッシュ
 * link_toとかformとかrubyコード埋め込んでる時のclassの付け方:　`form.submit, class: "任意のクラス名"`
 ### 投稿時のバリデーションに引っかかった際、エラーメッセージが出ない
 - 解決方法1：~~import Rails from "./rails-ujs”;をjavascript/application.jsに書くとエラーメッセージが出るようになった~~
-- 解決方法2：普通にpumaを再起動したら出るようになった。
+- 解決方法2:
+- エラーメッセージ`Error: Form responses must redirect to another location`と出る。
+- 原因は、createメソッドのelseの処理で、リクエストが成功し要求された処理が正常に完了したことを示すHTTPステータスコード200を返していることが問題となっていると思われる。
+- そこで、createメソッドのelseの処理に、`status: :unprocessable_entity`を追記し、処理ができなかったことを意味するHTTPステータスコード422を返すようにする。そうしたらエラーが消えた。
+- なお、必須のフィールドが欠落したいたりするなどで、フォームの送信に失敗した場合、HTTPステータスコード422 Unprocessable Entityを返すことが一般的らしい。
 
 ### エラーメッセージの内容を変えたい(nameを入力してくださいになってしまう)
 解決方法：モデルの翻訳情報を追加すればいい（config/locales/ja.yml）（速習実践ガイド　p103を参照）
 
 ### 削除した時に確認メッセージ（confirmが機能しない）が出ない/エラーメッセージが出なくなる
-解決方法１  
-- まず`= button_to "削除", post, method: :delete, data: {confirm: '削除してよろしいですか？' }`を`= button_to "削除", post, data: {turbo_method: :delete, turbo_confirm: '削除してよろしいですか？' }`に書き換える。
-- すると、今度はバリデーションのエラーメッセージが出なくなる。エラーメッセージ`Error: Form responses must redirect to another location`
-- 原因は、createメソッドのelseの際の処理で、リクエストが成功し、要求された処理が正常に完了したことを示すHTTPステータスコード200を返していることが問題となっていると思われる。
-- そこで、createメソッドのelseの処理に、`status: :unprocessable_entity`を追記し、処理ができなかったことを意味するHTTPステータスコード422を返すようにする。そうしたらエラーが消えた。
-- なお、必須のフィールドが欠落したいたりするなどで、フォームの送信に失敗した場合、HTTPステータスコード422 Unprocessable Entityを返すことが一般的らしい。
+解決方法  
+- `= button_to "削除", post, method: :delete, data: {confirm: '削除してよろしいですか？' }`を`= button_to "削除", post, method: :delete, data: {turbo_confirm: '削除してよろしいですか？' }`に書き換える。
+
 
 * コード直してもうまくいかない時は、一回pumaを再起動する。
 
