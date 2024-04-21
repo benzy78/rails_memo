@@ -78,10 +78,21 @@ before_action メソッド名, 条件ハッシュ
 * ActiveRecord：railsが採用するORマッパー。SQLを書かなくてもデータの登録などが可能といった機能がある。railsではテーブルごとに作成されたモデルクラスを通じてデータベースに接続する。
 * 
 
-## 開発中のちょっとしたこと
+## 開発中のちょっとしたこと（問題と解決方法とか）
 * sass使うなら、`gem 'sassc'`をgemfileに入れて、`bundle install`しないとダメっぽい。あと、cssのコメントのところをsassに移植する。
 * link_toとかformとかrubyコード埋め込んでる時のclassの付け方:　`form.submit, class: "任意のクラス名"`
-* 投稿時のバリデーションに引っかかった時にエラーメッセージが出ない:=>import Rails from "./rails-ujs”;をjavascript/application.jsに書くとエラーメッセージが出るようになった.＞エラーメッセージが出るようになったけど、メッセージの内容を変えたい。nameを入力してくださいになってしまう。＝＞モデルの翻訳情報を追加すればいい（config/locales/ja.yml）（速習実践　p103）
+### 投稿時のバリデーションに引っかかった際、エラーメッセージが出ない
+解決方法1：~~import Rails from "./rails-ujs”;をjavascript/application.jsに書くとエラーメッセージが出るようになった~~
+解決方法2：普通にpumaを再起動したら出るようになった。
+
+### エラーメッセージの内容を変えたい(nameを入力してくださいになってしまう)
+解決方法：モデルの翻訳情報を追加すればいい（config/locales/ja.yml）（速習実践ガイド　p103を参照）
+
+### 削除した時に確認メッセージ（confirmが機能しない）が出ない
+解決方法１  
+- まず`= button_to "削除", post, method: :delete, data: {confirm: '削除してよろしいですか？' }`を`= button_to "削除", post, data: {turbo_method: :delete, turbo_confirm: '削除してよろしいですか？' }`に書き換える。
+- すると、今度はバリデーションのエラーメッセージが出なくなる。原因は、次に、createメソッドのelseの処理に、`status: :unprocessable_entity`を追記。
+
 * コード直してもうまくいかない時は、一回pumaを再起動する。
 
 
