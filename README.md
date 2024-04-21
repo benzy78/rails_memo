@@ -92,10 +92,16 @@ before_action メソッド名, 条件ハッシュ
 ### エラーメッセージの内容を変えたい(nameを入力してくださいになってしまう)
 解決方法：モデルの翻訳情報を追加すればいい（config/locales/ja.yml）（速習実践ガイド　p103を参照）
 
-### 削除した時に確認メッセージ（confirmが機能しない）が出ない/エラーメッセージが出なくなる
+### 削除した時に確認メッセージ（confirmが機能しない）が出ない
 解決方法  
-- `= button_to "削除", post, method: :delete, data: {confirm: '削除してよろしいですか？' }`を`= button_to "削除", post, method: :delete, data: {turbo_confirm: '削除してよろしいですか？' }`に書き換える。
-
+ ```controller.rb
+ = button_to "削除", post, method: :delete, data: {confirm: '削除してよろしいですか？' }
+```
+上記のコードを次のように変える。
+```controller.rb
+= button_to "削除", post, method: :delete, data: {turbo_confirm: '削除してよろしいですか？' }
+```
+原因は、`data: {confirm: '削除してよろしいですか？' }`だとJSが反応していないこと。
 
 * コード直してもうまくいかない時は、一回pumaを再起動する。
 
