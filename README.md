@@ -81,7 +81,7 @@ before_action メソッド名, 条件ハッシュ
 ## 開発中のちょっとしたこと（問題と解決方法とか）
 * sass使うなら、`gem 'sassc'`をgemfileに入れて、`bundle install`しないとダメっぽい。あと、cssのコメントのところをsassに移植する。
 * link_toとかformとかrubyコード埋め込んでる時のclassの付け方:　`form.submit, class: "任意のクラス名"`
-### 投稿時のバリデーションに引っかかった際、エラーメッセージが出ない
+### ・投稿時のバリデーションに引っかかった際、エラーメッセージが出ない
 - 解決方法1：~~import Rails from "./rails-ujs”;をjavascript/application.jsに書くとエラーメッセージが出るようになった~~
 - 解決方法2:
 - エラーメッセージ`Error: Form responses must redirect to another location`と出る。
@@ -89,10 +89,10 @@ before_action メソッド名, 条件ハッシュ
 - そこで、createメソッドのelseの処理に、`status: :unprocessable_entity`を追記し、処理ができなかったことを意味するHTTPステータスコード422を返すようにする。そうしたらエラーが消えた。
 - なお、必須のフィールドが欠落したいたりするなどで、フォームの送信に失敗した場合、HTTPステータスコード422 Unprocessable Entityを返すことが一般的らしい。
 
-### エラーメッセージの内容を変えたい(nameを入力してくださいになってしまう)
+### ・エラーメッセージの内容を変えたい(nameを入力してくださいになってしまう)
 解決方法：モデルの翻訳情報を追加すればいい（config/locales/ja.yml）（速習実践ガイド　p103を参照）
 
-### 削除した時に確認メッセージ（confirmが機能しない）が出ない
+### ・削除した時に確認メッセージ（confirmが機能しない）が出ない
 解決方法  
  ```controller.rb
  = button_to "削除", post, method: :delete, data: {confirm: '削除してよろしいですか？' }
