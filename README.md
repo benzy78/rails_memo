@@ -82,7 +82,7 @@ before_action メソッド名, 条件ハッシュ
 * sass使うなら、`gem 'sassc'`をgemfileに入れて、`bundle install`しないとダメっぽい。あと、cssのコメントのところをsassに移植する。
 * link_toとかformとかrubyコード埋め込んでる時のclassの付け方:　`form.submit, class: "任意のクラス名"`
 ### ・投稿時のバリデーションに引っかかった際、エラーメッセージが出ない
-- 解決方法1：~~import Rails from "./rails-ujs”;をjavascript/application.jsに書くとエラーメッセージが出るようになった~~
+- 解決方法1：~~import Rails from "./rails-ujs”;をjavascript/application.jsに書くとエラーメッセージが出るようになった~~ これはだめだった。
 - 解決方法2:
 - エラーメッセージ`Error: Form responses must redirect to another location`と出る。
 - 原因は、createメソッドのelseの処理で、リクエストが成功し要求された処理が正常に完了したことを示すHTTPステータスコード200を返していることが問題となっていると思われる。
