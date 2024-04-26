@@ -101,7 +101,7 @@ before_action メソッド名, 条件ハッシュ
 ```controller.rb
 = button_to "削除", post, method: :delete, data: {turbo_confirm: '削除してよろしいですか？' }
 ```
-原因は、`data: {confirm: '削除してよろしいですか？' }`だとJSが反応していないこと。理由はよく分からない。
+原因は、`data: {confirm: '削除してよろしいですか？' }`だとJSが反応していないこと。理由はよく分からない。あと、button_toがlink_toだと機能しなくなる。
 
 * コード直してもうまくいかない時は、一回pumaを再起動する。
 
