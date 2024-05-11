@@ -108,6 +108,7 @@ before_action メソッド名, 条件ハッシュ
 ## 開発中のちょっとしたこと（問題と解決方法とか）
 * sass使うなら、`gem 'sassc'`をgemfileに入れて、`bundle install`しないとダメっぽい。あと、cssのコメントのところをsassに移植する。＊ちょっとSassに関しては色々調べないとダメだ。
 * link_toとかformとかrubyコード埋め込んでる時のclassの付け方:　`form.submit, class: "任意のクラス名"`
+* 命名：コントローラ名には複数形を使い、モデル名には単数形を用いる。
 ### ・投稿時のバリデーションに引っかかった際、エラーメッセージが出ない
 - 解決方法1：~~import Rails from "./rails-ujs”;をjavascript/application.jsに書くとエラーメッセージが出るようになった~~ これはだめだった。
 - 解決方法2:
