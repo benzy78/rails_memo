@@ -148,3 +148,5 @@ test "email addresses should be unique" do
     assert_not duplicate_user.valid?
   end
 ```
+### authenticateメソッド
+このメソッドは、引数に渡された文字列（パスワード）をハッシュ化した値と、データベース内にあるpassword_digestカラムの値を比較する。
