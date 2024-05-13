@@ -138,3 +138,13 @@ before_action メソッド名, 条件ハッシュ
 ### 原因が不明なエラーの際
 * コード直してもうまくいかない時は、一回pumaを再起動する。
 * gemのバージョンが古い可能性。バージョンの指定（~>5.1など）を消すと治る場合がある。
+
+### dupメソッド
+dupは、同じ属性を持つデータを複製するためのメソッド。例えば、testなどで用いる。
+```test.rb
+test "email addresses should be unique" do
+    duplicate_user = @user.dup
+    @user.save
+    assert_not duplicate_user.valid?
+  end
+```
