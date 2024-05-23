@@ -129,7 +129,7 @@ before_action メソッド名, 条件ハッシュ
 ```controller.rb
 = button_to "削除", post, method: :delete, data: {turbo_confirm: '削除してよろしいですか？' }
 ```
-原因は、`data: {confirm: '削除してよろしいですか？' }`だとJSが反応していないこと。理由はよく分からない。なお、button_toがlink_toだと機能しなくなる。
+原因は、`data: {confirm: '削除してよろしいですか？' }`だとJSが反応していないこと。理由はよく分からない。なお、`button_to`が`link_to`だと機能しなくなる。
 
 ### Rspecが機能しない
 `gem "rspec-rails"`と`gem "factory_bot_rails"`のバージョンの指定を消したら動いた。どうやら指定していたバージョンが古かったせいだと思われる。
