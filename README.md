@@ -151,7 +151,7 @@ test "email addresses should be unique" do
 ### authenticateメソッド
 このメソッドは、引数に渡された文字列（パスワード）をハッシュ化した値と、データベース内にあるpassword_digestカラムの値を比較する。
 
-### resources :usersで可能となるパス
+### `resources :users`で可能となるパス
 * HTTPリクエストメソッド	URL	アクション	名前付きルーティング	用途
 * GET	/users	index	users_path	すべてのユーザーを一覧するページ
 * GET	/users/1	show	user_path(user)	特定のユーザーを表示するページ
