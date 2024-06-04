@@ -166,3 +166,6 @@ test "email addresses should be unique" do
 * GET	/users/1/edit	edit	edit_user_path(user)	id=1のユーザーを編集するページ
 * PATCH	/users/1	update	user_path(user)	ユーザーを更新するアクション
 * DELETE	/users/1	destroy	user_path(user)	ユーザーを削除するアクション
+
+### エラーが起こってるのはわかっているが、どこが原因なのかわからない時
+紙に書いて、一つ一つの処理を順を追って整理して、どこの過程に問題があるのかを考えると、案外問題がわかる。
