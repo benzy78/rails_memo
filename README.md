@@ -169,3 +169,17 @@ test "email addresses should be unique" do
 
 ### エラーが起こってるのはわかっているが、どこが原因なのかわからない時
 紙に書いて、一つ一つの処理を順を追って整理して、どこの過程に問題が発生しているのかを考えると、案外問題がわかる。
+
+### render絡みのエラーについて
+大抵、http statusコードを指定いない場合に起こっている。renderの横に適切なステータスコードを記述するとなおる。
+```controller.rb
+# 例
+def confirm_new
+    @task = current_user.tasks.new(task_params)
+    if @task.valid?
+      render :confirm_new, status: :accepted
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+```
