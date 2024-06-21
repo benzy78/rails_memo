@@ -186,3 +186,27 @@ def confirm_new
 ```
 
 ## form_withについて
+```form.rb
+_form.html.slim
+= form_with model: @task, local: true do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, id: 'task_name'
+  .form-group
+    = f.label :description
+    = f.text_area :description, id: 'task_description'
+  = f.submit nil
+
+tasks_controller.rb
+def new
+  @task = Task.new
+end
+```
+処理の流れ（newページを開いて、renderで_formが読み込まれている状況）
+1. tasks/newを開くと、ルーティングより、tasks#newアクションの呼び出し
+2. コントローラの記述より、@taskというインスタンス変数に、Taskモデルクラスを用いたインスタンス変数を作成。この時、@taskの属性にid,name,description,created_at,updated_atそれぞれにnilの値が設定。
+3. `form_with model:@task`の設定より、@taskオブジェクトの属性に対応するフォームフィールドを作成。newページの時、@taskの値がformにセットされる（なお、newでは全ての属性がnilなので空欄）。
+4. また、`form_with model:@task`より、Taskモデルとの関連付けが行われている。これは、@taskがTaskモデルクラスをもとに作られたインスタンスであるから。
+5. formに値を入力してsubmitをクリックすると、paramsに入力した値がハッシュ形式で代入され、サーバーに送信される。
+6. submitで送信したことで、tasks/パスにPOSTメソッドでサーバーにリクエストを送り、resources: tasksのルーティング設定より、createアクションが呼び出される。
+7. あとはcreateアクションに従って、task_paramsでデータがフィルタリングされ、保存される。
