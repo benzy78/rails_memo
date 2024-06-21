@@ -172,6 +172,7 @@ test "email addresses should be unique" do
 
 ### render絡みのエラーについて
 大抵、http statusコードを指定いない場合に起こっている。renderの横に適切なステータスコードを記述すると直るけど、まだ細かい仕組みを理解できていない。
+なぜなのかはよくわからないけど、railsでrenderを使うときは、必ずHTTPのステータスコードを書かないとダメ。
 ```controller.rb
 # 例
 def confirm_new
